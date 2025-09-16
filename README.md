@@ -19,107 +19,84 @@
 
 ---
 
-## 快速开始
+## 安装与使用教程（完整）
 
-1) 安装前端依赖
+### 1) 安装依赖
 
+- 前端：
 ```bash
 cd agent-chat-ui
 pnpm install
 ```
 
-2) 初始化后端环境（时间较长）
-
+- 后端（初始化 Conda 环境，时间较长）：
 ```bash
 cd ../Biomni/biomni_env
 bash setup.sh
 ```
 
-3) 激活后端环境并安装工具
+### 2) 环境与配置（.env）
+
+请分别在前端与后端目录中复制示例环境文件，并按需填写：
+
+- 前端（agent-chat-ui）：
+```bash
+cd agent-chat-ui
+cp .env.example .env
+```
+必填/常用参数：
+- `LANGSMITH_API_KEY`（如使用 LangSmith 日志/监控）
+
+- 后端（Biomni）：
+```bash
+cd Biomni
+cp .env.example .env
+```
+必填/常用参数：
+- `LANGSMITH_API_KEY`（可选）
+- `CUSTOM_MODEL_NAME`（例如 `claude-sonnet-4-20250514` 或自定义别名）
+- `CUSTOM_MODEL_BASE_URL`（如 `https://your.model.host/v1`）
+- `CUSTOM_MODEL_API_KEY`
+
+说明：
+- matplotlib 绘图：已在 `biomni/setup_matplotlib.py` 配置无头后端，工作流启动时自动生效。
+- 图片输出：Matplotlib 生成图片统一保存到 `./saved_pictures`。
+
+### 3) 数据准备（推荐先于后端启动执行）
+
+为避免在 `langgraph dev` 启动时并发下载导致报错，建议先在 notebook 中独立拉取数据：
+```bash
+cd Biomni/biomni/tutorials
+open biomni_101.ipynb   # 或用 VSCode/Jupyter 打开
+```
+运行第一个单元格（包含数据检查/下载逻辑），将必要数据下载到 `./data/biomni_data/`。
+
+补充：
+- 默认数据目录：`./data/biomni_data/`；若已预下载，后端启动更快更稳。
+- 自定义数据：运行时可通过 A1 的 `add_data({"/abs/path/to/file": "Please use it if needed"})` 注入数据湖索引（不复制文件）。
+
+### 4) 激活后端环境并安装工具
 
 ```bash
 conda activate biomni_e1
-cd ../
+cd Biomni
 pip install -U "langgraph-cli[inmem]"
 ```
 
-4) 启动后端（LangGraph 开发模式）
+### 5) 启动后端（LangGraph 开发模式）
 
 ```bash
-cd Biomni
 langgraph dev
 ```
+控制台将显示 LangGraph 服务信息。若使用自定义模型服务，请确认 `.env` 的 Base URL 与 API Key 有效。
 
-5) 启动前端
+### 6) 启动前端
 
 ```bash
 cd ../agent-chat-ui
 pnpm dev
 ```
-
-6) 打开浏览器访问 `http://localhost:3000`
-
----
-
-## 详细说明
-
-### 1. 配置与环境
-
-请分别在前端与后端目录中准备 `.env` 文件：
-
-1) 前端（agent-chat-ui）
-
-```bash
-cd agent-chat-ui
-cp .env.example .env
-```
-
-需要配置的参数：LANGSMITH_API_KEY
-
-2) 后端（Biomni）
-
-```bash
-cd Biomni
-cp .env.example .env
-```
-
-需要配置的参数:LANGSMITH_API_KEY, CUSTOM_MODEL_NAME, CUSTOM_MODEL_BASE_URL, CUSTOM_MODEL_API_KEY
-
-其他说明：
-- matplotlib绘图：已在 `biomni/setup_matplotlib.py` 配置 Matplotlib 的无头后端，工作流启动时自动应用。
-- 图片输出：所有由 Matplotlib 生成的图片会被自动保存至 `./saved_pictures`，避免零散目录。
-
-### 2. 数据准备
-
-为避免在 `langgraph dev` 启动过程中并发下载导致报错，建议先在 notebook 中单独拉取数据：
-
-```bash
-cd Biomni/biomni/tutorials
-open biomni_101.ipynb   # 或使用 VSCode/Jupyter 打开
-```
-
-在 `biomni_101.ipynb` 中运行第一个单元格（已包含数据检查/下载逻辑），这会将必要数据下载到默认目录 `./data/biomni_data/`。
-
-说明：
-- 默认数据目录：`./data/biomni_data/`，A1 也会在首次启动时检查并按需下载（若你已通过 notebook 预下载，则启动更快更稳）。
-- 如需添加自定义数据，可在运行时通过 A1 的 `add_data({"/abs/path/to/file": "Please use it if needed"})` 注入到数据湖索引（不会复制文件）。
-
-### 3. 运行后端
-
-```bash
-conda activate biomni_e1
-cd Biomni
-langgraph dev
-```
-
-启动后控制台将显示 LangGraph 服务信息。若使用自定义模型服务，请确保 `.env` 中的地址与密钥有效。
-
-### 4. 运行前端
-
-```bash
-cd agent-chat-ui
-pnpm dev
-```
+打开浏览器访问 `http://localhost:3000`。
 
 
 
