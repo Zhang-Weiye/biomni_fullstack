@@ -6,15 +6,15 @@
 - 前端：`agent-chat-ui/`（Next.js，基于 LangGraph SDK 的会话界面）
 
 参考上游项目：
-- Biomni（后端参考）：`https://github.com/snap-stanford/Biomni`
-- agent-chat-ui（前端参考）：`https://github.com/langchain-ai/agent-chat-ui`
+- Biomni（后端参考）：[https://github.com/snap-stanford/Biomni](https://github.com/snap-stanford/Biomni)
+- agent-chat-ui（前端参考）：[https://github.com/langchain-ai/agent-chat-ui](https://github.com/langchain-ai/agent-chat-ui)
 
 ---
 
 ## 先决条件
 
 - 操作系统：macOS / Linux（Windows 需 WSL）
-- 包管理：Conda（推荐 Mambaforge/Miniforge），Node.js（≥ 18），pnpm（≥ 9）
+- 包管理：Conda，Node.js（≥ 18），pnpm（≥ 9）
 - Python：3.11（由环境脚本自动配置）
 
 ---
@@ -83,7 +83,7 @@ cd Biomni
 cp .env.example .env
 ```
 
-需要配置的参数:LANGSMITH_API_KEY
+需要配置的参数:LANGSMITH_API_KEY, CUSTOM_MODEL_NAME, CUSTOM_MODEL_BASE_URL, CUSTOM_MODEL_API_KEY
 
 其他说明：
 - matplotlib绘图：已在 `biomni/setup_matplotlib.py` 配置 Matplotlib 的无头后端，工作流启动时自动应用。
