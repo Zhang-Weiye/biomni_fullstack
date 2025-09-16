@@ -1,0 +1,330 @@
+/* BiomniMessageParser Styles */
+.biomni-message-content {
+  line-height: 1.6;
+  width: 100%;
+}
+
+/* Force all child containers to have no margins */
+.biomni-message-content > * {
+  margin-bottom: 0 !important;
+  margin-top: 0 !important;
+}
+
+/* Step outer container (gray background) */
+.step-outer-container {
+  background: #f5f5f5;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  margin-bottom: 0; /* no gap between boxes */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Step container (white background) */
+.step-container {
+  background: white;
+  border-radius: 0.375rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Step header */
+.step-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: #f9fafb;
+  border-bottom: 1px solid #e5e7eb;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Triangle button styling */
+.triangle-button {
+  font-size: 0.75rem;
+  color: #6b7280;
+  transition: transform 0.2s ease-in-out;
+  user-select: none;
+  margin-right: 0.25rem;
+  flex-shrink: 0;
+}
+
+.triangle-button.collapsed {
+  transform: rotate(-90deg);
+}
+
+.triangle-button.expanded {
+  transform: rotate(0deg);
+}
+
+/* Right side label: emoji + text inline */
+.step-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Download button styling */
+.download-btn {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+}
+
+.download-btn:hover {
+  background-color: #e5e7eb;
+}
+
+.download-btn:active {
+  background-color: #d1d5db;
+}
+
+/* Step title removed; keep for backward compat hidden */
+.step-title {
+  display: none;
+}
+
+/* Step content */
+.step-content {
+  padding: 0.75rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Section spacing */
+.reasoning-step,
+.executing-step,
+.observation-step,
+.answer-step,
+.planning-section,
+.image-section,
+.table-section,
+.picture-showing-step {
+  margin-bottom: 0; /* no gaps between sections */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Clean white background containers */
+.reasoning-step .bg-white,
+.executing-step .bg-white,
+.observation-step .bg-white,
+.answer-step .bg-white,
+.image-section .bg-white,
+.table-section .bg-white,
+.picture-showing-step .bg-white {
+  background: white;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Picture showing styling */
+.picture-showing-step img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.375rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  display: block;
+  margin: 0 auto;
+}
+
+.picture-showing-step .bg-white {
+  padding: 0.75rem;
+  text-align: center;
+}
+
+/* Python code styling */
+.python-code {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', 'DejaVu Sans Mono', monospace;
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+.python-code pre {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', 'DejaVu Sans Mono', monospace !important;
+  font-size: 0.8rem !important;
+  line-height: 1.4 !important;
+}
+
+.python-code code {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', 'DejaVu Sans Mono', monospace !important;
+  font-size: 0.8rem !important;
+}
+
+/* Empty content styling */
+.empty-content {
+  padding: 1rem;
+  text-align: center;
+  font-style: italic;
+  color: #6b7280;
+  background: white;
+}
+
+/* Animation for streaming indicators */
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: .5;
+  }
+}
+
+/* Emoji styling */
+.biomni-message-content .text-lg {
+  font-size: 1.125rem;
+  line-height: 1;
+}
+
+/* Table preview styling */
+.table-preview {
+  overflow-x: auto;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.table-preview table {
+  font-size: 0.875rem;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .biomni-message-content {
+    font-size: 0.9rem;
+  }
+  
+  .reasoning-step,
+  .executing-step,
+  .observation-step,
+  .answer-step,
+  .planning-section,
+  .image-section,
+  .table-section,
+  .picture-showing-step {
+    margin-bottom: 0; /* keep no gaps on mobile too */
+  }
+  
+  .step-outer-container {
+    margin-left: -0.5rem;
+    margin-right: -0.5rem;
+    border-radius: 0.25rem;
+    margin-bottom: 0; /* ensure no gaps on mobile */
+  }
+  
+  .python-code {
+    font-size: 0.75rem;
+  }
+  
+  .python-code pre,
+  .python-code code {
+    font-size: 0.75rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .biomni-message-content {
+    font-size: 0.85rem;
+  }
+  
+  .table-preview {
+    max-height: 300px;
+  }
+  
+  .python-code {
+    font-size: 0.7rem;
+  }
+  
+  .python-code pre,
+  .python-code code {
+    font-size: 0.7rem !important;
+  }
+  
+  .step-outer-container {
+    margin-bottom: 0; /* ensure no gaps on small screens */
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .step-outer-container {
+    background-color: #374151 !important;
+  }
+  
+  .step-container {
+    background-color: #1f2937 !important;
+    border-color: #374151 !important;
+  }
+  
+  .step-header {
+    background-color: #374151 !important;
+    border-bottom-color: #4b5563 !important;
+  }
+  
+  .step-title {
+    display: none !important;
+  }
+  
+  .reasoning-step .bg-white,
+  .executing-step .bg-white,
+  .observation-step .bg-white,
+  .answer-step .bg-white,
+  .image-section .bg-white,
+  .table-section .bg-white,
+  .picture-showing-step .bg-white {
+    background-color: #1f2937 !important;
+    color: #f9fafb !important;
+  }
+  
+  .empty-content {
+    background-color: #1f2937;
+    color: #9ca3af;
+  }
+  
+  .table-preview table {
+    border-color: #4b5563 !important;
+  }
+  
+  .table-preview th,
+  .table-preview td {
+    border-color: #4b5563 !important;
+    color: #f9fafb !important;
+  }
+  
+  .table-preview th {
+    background-color: #374151 !important;
+  }
+}
+
+/* Print styles */
+@media print {
+  .biomni-message-content {
+    font-size: 12pt;
+    line-height: 1.4;
+  }
+  
+  .reasoning-section .bg-white,
+  .executing-section .bg-white,
+  .observation-section .bg-white,
+  .answer-section .bg-white,
+  .raw-content .bg-white {
+    background-color: white !important;
+    color: black !important;
+  }
+}
