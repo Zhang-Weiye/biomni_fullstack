@@ -45,7 +45,7 @@ cd agent-chat-ui
 cp .env.example .env
 ```
 必填/常用参数：
-- `LANGSMITH_API_KEY`（如使用 LangSmith 日志/监控）
+- `LANGSMITH_API_KEY`
 
 - 后端（Biomni）：
 ```bash
@@ -53,13 +53,13 @@ cd Biomni
 cp .env.example .env
 ```
 必填/常用参数：
-- `LANGSMITH_API_KEY`（可选）
+- `LANGSMITH_API_KEY`
 - `CUSTOM_MODEL_NAME`（例如 `claude-sonnet-4-20250514` 或自定义别名）
 - `CUSTOM_MODEL_BASE_URL`（如 `https://your.model.host/v1`）
 - `CUSTOM_MODEL_API_KEY`
 
 说明：
-- matplotlib 绘图：已在 `biomni/setup_matplotlib.py` 配置无头后端，工作流启动时自动生效。
+- matplotlib 绘图：已在 `biomni/setup_matplotlib.py` 配置工作流启动时自动生效。
 - 图片输出：Matplotlib 生成图片统一保存到 `./saved_pictures`。
 
 ### 3) 数据准备（推荐先于后端启动执行）
@@ -72,7 +72,7 @@ open biomni_101.ipynb   # 或用 VSCode/Jupyter 打开
 运行第一个单元格（包含数据检查/下载逻辑），将必要数据下载到 `./data/biomni_data/`。
 
 补充：
-- 默认数据目录：`./data/biomni_data/`；若已预下载，后端启动更快更稳。
+- 默认数据目录：`./data/biomni_data/`；
 - 自定义数据：运行时可通过 A1 的 `add_data({"/abs/path/to/file": "Please use it if needed"})` 注入数据湖索引（不复制文件）。
 
 ### 4) 激活后端环境并安装工具
