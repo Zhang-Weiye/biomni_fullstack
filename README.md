@@ -11,7 +11,7 @@
 
 ---
 
-## 先决条件
+## 环境准备
 
 - 操作系统：macOS / Linux（Windows 需 WSL）
 - 包管理：Conda，Node.js（≥ 18），pnpm（≥ 9）
